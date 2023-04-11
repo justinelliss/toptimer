@@ -1,0 +1,13 @@
+{
+    "home_title": "Welcome to the samples",
+    "single_title": "Single page joke",
+    "single_button": "Single page",
+    "multi_title": "Page with multiple jokes",
+    "multi_button": "Multi page",
+    "detail_title": "The entire joke",
+    "timer_title": "Start your timer...",
+    "timer_button": "Timer page",
+    "timer_start_button": "Start timer",
+    "timer_end_button": "End timer",
+    "fake_data": "Fake data below"
+}
