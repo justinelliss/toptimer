@@ -59,6 +59,16 @@ class HomeView extends StatelessWidget {
               child: Text('fake_data'.tr()),
             ),
             const Gap(60),
+            ElevatedButton(
+              style: TextButton.styleFrom(
+                  foregroundColor: kPrimaryLightColor
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.clinicData);
+              },
+              child: Text('clinic_button'.tr()),
+            ),
+            const Gap(60),
             Image.asset('assets/images/flutter.png'),
           ],
         ),

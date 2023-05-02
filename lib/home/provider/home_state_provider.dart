@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:toptimer/home/data/models/fake_data_state.dart';
 
+// import '../data/models/clinic_array_state.dart';
+import '../data/models/clinic_list_state.dart';
 import '../data/models/joke_array_state.dart';
 import '../data/models/joke_state.dart';
 import '../data/repository/home_repository.dart';
@@ -30,6 +32,20 @@ class JokeArrayDataNotifier extends StateNotifier<JokeArrayState> {
     state = state.copyWith(isLoading: true);
     await homeRepository.fetchJokeArray().then((data) {
       state = state.copyWith(jokeArrayModel: data, isLoading: false);
+    });
+  }
+}
+
+class ClinicListDataNotifier extends StateNotifier<ClinicListState> {
+  ClinicListDataNotifier(this.homeRepository) : super(ClinicListState()) {
+    getClinicList();
+  }
+  HomeRepository homeRepository;
+
+  Future<void> getClinicList() async {
+    state = state.copyWith(isLoading: true);
+    await homeRepository.getClinics().then((data) {
+      state = state.copyWith(clinicListModel: data, isLoading: false);
     });
   }
 }

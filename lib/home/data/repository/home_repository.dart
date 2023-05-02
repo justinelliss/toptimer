@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:math';
 import 'package:dio/dio.dart';
@@ -6,6 +7,8 @@ import 'package:toptimer/home/data/models/fake_data_model.dart';
 import 'package:toptimer/home/data/repository/backend_repository.dart';
 import '../../../core/network/dio_exceptions.dart';
 import '../api/home_api.dart';
+import '../models/clinic_list.dart';
+import '../models/clinic_model.dart';
 import '../models/joke_array_model.dart';
 import '../models/joke_model.dart';
 
@@ -28,6 +31,7 @@ class HomeRepository implements BackendRepository{
 
   late List<String> _fakeValues;
 
+  @override
   Future<JokeModel> fetchJoke() async {
     try {
       final res = await _homeApi.fetchJokeApiRequest();
@@ -40,6 +44,7 @@ class HomeRepository implements BackendRepository{
     }
   }
 
+  @override
   Future<JokeArrayModel> fetchJokeArray() async {
     try {
       final res = await _homeApi.fetchJokesArrayApiRequest();
@@ -52,8 +57,9 @@ class HomeRepository implements BackendRepository{
     }
   }
 
+  @override
   Future<FakeDataModel> searchBy(String query) async {
-    debugPrint("query: " + query);
+    debugPrint("query: $query");
     if(query == ""){
       return const FakeDataModel();
     }
@@ -64,6 +70,19 @@ class HomeRepository implements BackendRepository{
     return FakeDataModel(fakeDataList: _fakeValues
         .where((element) => element.startsWith(query.toLowerCase()))
         .toList());
+  }
+
+  @override
+  Future<ClinicList> getClinics() async {
+    try {
+      final res = await _homeApi.fetchClinicsArrayApiRequest();
+      return res;
+
+    } on DioError catch (e) {
+      final errorMessage = DioExceptions.fromDioError(e);
+      debugPrint(errorMessage.toString());
+      rethrow;
+    }
   }
 
 }

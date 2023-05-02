@@ -4,5 +4,6 @@ class Routes {
   static const String multiple = '/multiple';
   static const String timer = '/timer';
   static const String fakeData = '/fakeData';
+  static const String clinicData = '/clinicData';
 
 }

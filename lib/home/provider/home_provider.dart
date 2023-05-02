@@ -2,6 +2,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/shared_provider/shared_providers.dart';
 import '../data/api/home_api.dart';
+// import '../data/models/clinic_array_state.dart';
+import '../data/models/clinic_list_state.dart';
 import '../data/models/fake_data_model.dart';
 import '../data/models/fake_data_state.dart';
 import '../data/models/joke_array_state.dart';
@@ -36,3 +38,7 @@ final fakeDataProvider = StateNotifierProvider.family<FakeDataNotifier, FakeData
   return FakeDataNotifier(ref.read(homeRepositoryProvider), searchTerm);
 });
 
+final clinicListDataProvider =
+StateNotifierProvider<ClinicListDataNotifier, ClinicListState>((ref) {
+  return ClinicListDataNotifier(ref.read(homeRepositoryProvider));
+});

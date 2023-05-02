@@ -1,5 +1,8 @@
 {
     "home_title": "Welcome to the samples",
+    "clinic_title": "List of Clinics",
+    "clinic_button": "Load Clinics",
+
     "single_title": "Single page joke",
     "single_button": "Single page",
     "multi_title": "Page with multiple jokes",

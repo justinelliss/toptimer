@@ -1,6 +1,9 @@
 
+import 'dart:convert';
+
 import '../../../core/network/constant/endpoints.dart';
 import '../../../core/network/dio_client.dart';
+import '../models/clinic_list.dart';
 
 class HomeApi {
   // dio instance
@@ -22,6 +25,15 @@ class HomeApi {
     try {
       final res = await _dioClient.get(Endpoints.baseUrl + "&amount=4");
       return res.data;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<ClinicList> fetchClinicsArrayApiRequest() async {
+    try {
+      final res = await _dioClient.get(Endpoints.clinicUrl);
+      return ClinicList.fromJson({'clinicList': res.data});
     } catch (e) {
       rethrow;
     }

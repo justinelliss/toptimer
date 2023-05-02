@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toptimer/routes/routes.dart';
 
+import '../home/view/clinic_page.dart';
 import '../home/view/fake_data_page.dart';
 import '../home/view/home_page.dart';
 import '../home/view/multi_page.dart';
@@ -14,6 +15,7 @@ class AppRoutes {
     Routes.multiple: (context) => const MultiPage(),
     Routes.timer: (context) => TimerPage(),
     Routes.fakeData: (context) => FakeDataPage(),
+    Routes.clinicData: (context) => ClinicPage(),
 
 
   };
